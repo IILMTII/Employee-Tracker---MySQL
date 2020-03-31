@@ -18,7 +18,7 @@ Requires text editor Like Vscode, frameworks like Node.js and MySQL installed.
                 
 ## Usage
 
-Go to terminal and type npm i then node index.js then choose any option you want from the choices which will appear in the terminal
+On terminal, type npm i then node index.js. Choose any option you want from the choices displayed on the terminal.
 
 ## Credits
  
