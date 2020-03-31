@@ -11,7 +11,6 @@
 * [Credits](#credits)
 * [License](#license)
 * [Tests](#tests)
-* [Question](#question)
                  
 ## Installation
 
@@ -30,10 +29,6 @@ Created by IILMTII
 MIT License 
 
 ![badge](https://img.shields.io/badge/License-MIT-yellowgreen)
-![badge](https://img.shields.io/badge/dependencies-upto%20date-ff69b4)
-![badge](https://img.shields.io/badge/Version-v1.0.0-blue)
-
-![gif](https://media.giphy.com/media/UQlfYQugD7rmccwlv9/giphy.gif )
 
                 
 ## Tests
