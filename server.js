@@ -31,45 +31,19 @@ function start() {
             type: "list",
             message: "Would you like to do ?",
             choices: ["View all Employees",
-                "View all Employees By Department",
-                "View all Employees By Manager",
+                "View all Employees By Department [IN DEVELOPMENT]",
+                "View all Employees By Manager [IN DEVELOPMENT]",
                 "Add Employee",
                 "Add Roles",
                 "Add Departments",
-                "Remove Employee",
-                "Update Employee Role",
-                "Update Employee Manager",
+                "Remove Employee [IN DEVELOPMENT]",
+                "Update Employee Role [IN DEVELOPMENT]",
+                "Update Employee Manager [IN DEVELOPMENT]",
                 "View All Roles",
                 "Exit"
             ]
         })
         .then(function(answer) {
-            //     chosen = ["View all Employees",
-            //         "View all Employees By Department",
-            //         "View all Employees By Manager",
-            //         "Add Employee",
-            //         "Add Roles",
-            //         "Add Departments",
-            //         "Remove Employee",
-            //         "Update Employee Role",
-            //         "Update Employee Manager",
-            //         "View All Roles",
-            //         "Exit"
-            //     ]
-            //     if (answer.chooseData === chosen[3]) {
-            //         addEmployee();
-            //     } else if (answer.chooseData === chosen[4]) {
-            //         addRoles();
-            //     } else if (answer.chooseData === chosen[5]) {
-            //         addDepartments();
-            //     } else if (answer.chooseData === chosen[0]) {
-            //         viewEmployee();
-            //     } else if (answer.chooseData === chosen[9]) {
-            //         viewRole();
-            //     } else {
-            //         connection.end();
-            //     }
-            // });
             switch (answer.chooseData) {
                 case "View all Employees":
                     viewEmployee();;
@@ -211,6 +185,7 @@ function addEmployee() {
                 employees.push({ name: `${item.first_name} ${item.last_name}`, value: item.id })
             });
             employees.push({ name: 'none', value: null })
+            console.log(employees)
             inquirer
                 .prompt([{
                         name: "employeeFirstName",
@@ -256,23 +231,27 @@ function addEmployee() {
 }
 
 function viewEmployee() {
+    console.log('\n')
     var query = "SELECT * FROM employee";
     connection.query(query, function(err, res) {
         if (err) throw err;
         res.forEach((item) => {
             console.log("Employee id: " + item.id + " | Employee name: " + item.first_name, item.last_name + " | Role ID: " + item.role_id + " | Employee manager ID: " + item.manager_id)
         });
+        console.log('\n')
         start();
     });
 };
 
 function viewRole() {
+    console.log('\n')
     var query = "SELECT * FROM role";
     connection.query(query, function(err, res) {
         if (err) throw err;
         res.forEach((item) => {
             console.log("Role id: " + item.id + " | Role title: " + item.title + " | Salary: " + item.salary + " | Role department ID: " + item.department_id)
         });
+        console.log('\n')
         start();
     });
 };
