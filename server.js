@@ -44,30 +44,76 @@ function start() {
             ]
         })
         .then(function(answer) {
-            chosen = ["View all Employees",
-                "View all Employees By Department",
-                "View all Employees By Manager",
-                "Add Employee",
-                "Add Roles",
-                "Add Departments",
-                "Remove Employee",
-                "Update Employee Role",
-                "Update Employee Manager",
-                "View All Roles",
-                "Exit"
-            ]
-            if (answer.chooseData === chosen[3]) {
-                addEmployee();
-            } else if (answer.chooseData === chosen[4]) {
-                addRoles();
-            } else if (answer.chooseData === chosen[5]) {
-                addDepartments();
-            } else if (answer.chooseData === chosen[0]) {
-                viewEmployee();
-            } else if (answer.chooseData === chosen[9]) {
-                viewRole();
-            } else {
-                connection.end();
+            //     chosen = ["View all Employees",
+            //         "View all Employees By Department",
+            //         "View all Employees By Manager",
+            //         "Add Employee",
+            //         "Add Roles",
+            //         "Add Departments",
+            //         "Remove Employee",
+            //         "Update Employee Role",
+            //         "Update Employee Manager",
+            //         "View All Roles",
+            //         "Exit"
+            //     ]
+            //     if (answer.chooseData === chosen[3]) {
+            //         addEmployee();
+            //     } else if (answer.chooseData === chosen[4]) {
+            //         addRoles();
+            //     } else if (answer.chooseData === chosen[5]) {
+            //         addDepartments();
+            //     } else if (answer.chooseData === chosen[0]) {
+            //         viewEmployee();
+            //     } else if (answer.chooseData === chosen[9]) {
+            //         viewRole();
+            //     } else {
+            //         connection.end();
+            //     }
+            // });
+            switch (answer.chooseData) {
+                case "View all Employees":
+                    viewEmployee();;
+                    break;
+
+                case "View all Employees By Department":
+                    // viewAllByDepart();
+                    break;
+
+                case "View all Employees By Manager":
+                    // viewAllByManager();
+                    break;
+
+                case "Add Employee":
+                    addEmployee();
+                    break;
+
+                case "Add Roles":
+                    addRoles();
+                    break;
+
+                case "Add Departments":
+                    addDepartments();
+                    break;
+
+                case "Remove Employee":
+                    // removeEmployee();
+                    break;
+
+                case "Update Employee Role":
+                    // updateEmployee();
+                    break;
+
+                case "Update Employee Role":
+                    // updateEmployee();
+                    break;
+
+                case "View All Roles":
+                    viewRole();
+                    break;
+
+                case "Exit":
+                    connection.end();
+                    break;
             }
         });
 }
@@ -142,7 +188,7 @@ function addDepartments() {
                 },
                 function(err) {
                     if (err) throw err;
-                    console.log("Your department was created successfully!");
+                    console.log("Department Added !");
                     start();
                 }
             );
@@ -155,10 +201,11 @@ function addEmployee() {
     let roles = []
     let employees = []
     connection.query('select * from role', function(err, res) {
-        console.log(res);
+        // console.log(res);
         res.forEach((item) => {
-            roles.push({ name: item.name, value: item.id })
+            roles.push({ name: item.title, value: item.id })
         });
+        // console.log(roles)
         connection.query('select * from employee', function(err, res) {
             res.forEach((item) => {
                 employees.push({ name: `${item.first_name} ${item.last_name}`, value: item.id })
@@ -199,7 +246,7 @@ function addEmployee() {
                         },
                         function(err) {
                             if (err) throw err;
-                            console.log("Your employee was added successfully!");
+                            console.log("Employee Added !");
                             start()
                         }
                     );
